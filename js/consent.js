@@ -52,7 +52,8 @@
   function open() {
     if (!box) build();
     box.hidden = false;
-    requestAnimationFrame(function () { requestAnimationFrame(function () { box.classList.add('is-open'); }); });
+    void box.offsetWidth;
+    box.classList.add('is-open');
   }
 
   function close() {

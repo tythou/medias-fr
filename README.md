@@ -1,5 +1,3 @@
 # medias.fr
 
-Version de consultation du site institutionnel de medias.fr, la régie des médias en .fr.
-
-Aperçu : https://tythou.github.io/medias-fr/
+Ancienne version de consultation. Le site officiel est https://medias.fr/ (WordPress, hébergement Hostinger).

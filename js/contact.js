@@ -1,5 +1,5 @@
 /* medias.fr · formulaire de contact
-   Envoi vers contact.php (hébergement de medias.fr). Si le serveur ne répond pas
+   Envoi vers l'adresse indiquée par le formulaire (WordPress ou contact.php), protégé par Cloudflare Turnstile quand il est actif. Si le serveur ne répond pas
    en JSON (version de consultation sans PHP), la messagerie du visiteur prend le relais. */
 (function () {
   'use strict';
@@ -27,6 +27,11 @@
     var cb = f.consentement;
     cb.setAttribute('aria-invalid', cb.checked ? 'false' : 'true');
     if (!cb.checked && !first) first = cb;
+    var captcha = form.querySelector('.cf-turnstile');
+    if (!first && captcha && !(f['cf-turnstile-response'] && f['cf-turnstile-response'].value)) {
+      say('Merci de valider la vérification anti-robot.', 'err');
+      return false;
+    }
     if (first) first.focus();
     return !first;
   }
@@ -44,12 +49,16 @@
     say('Votre messagerie s’ouvre pour finaliser l’envoi.', 'ok');
   }
 
+  function resetCaptcha() {
+    if (window.turnstile && form.querySelector('.cf-turnstile')) { try { window.turnstile.reset(); } catch (err) {} }
+  }
+
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    if (!check()) { say('Merci de compléter les champs signalés.', 'err'); return; }
+    if (!check()) { if (!status.textContent || status.className.indexOf('is-err') < 0) say('Merci de compléter les champs signalés.', 'err'); return; }
     btn.disabled = true;
     say('Envoi en cours…');
-    fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
+    fetch(form.getAttribute('action'), { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
       .then(function (r) { return r.json(); })
       .then(function (d) {
         if (d && d.ok) {
@@ -61,6 +70,6 @@
         }
       })
       .catch(viaMail)
-      .then(function () { btn.disabled = false; });
+      .then(function () { btn.disabled = false; resetCaptcha(); });
   });
 })();

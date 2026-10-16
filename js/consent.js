@@ -8,6 +8,7 @@
   var MAX = 1000 * 60 * 60 * 24 * 182;
   var doc = document;
   var box = null;
+  var POLICY = window.MEDIAS_FR_POLICY || 'mentions-legales.html#cookies';
 
   function read() {
     try {
@@ -37,7 +38,7 @@
     box.setAttribute('aria-labelledby', 'consent-titre');
     box.innerHTML =
       '<h2 id="consent-titre">Votre choix sur les cookies</h2>' +
-      '<p>Avec votre accord, medias.fr utilise des cookies de mesure d’audience pour comprendre l’usage du site. Aucun n’est déposé sans votre choix. <a href="mentions-legales.html#cookies">En savoir plus</a></p>' +
+      '<p>Avec votre accord, medias.fr utilise des cookies de mesure d’audience pour comprendre l’usage du site. Aucun n’est déposé sans votre choix. <a href="' + POLICY + '">En savoir plus</a></p>' +
       '<div class="consent__actions">' +
       '<button type="button" class="btn btn--sm btn--secondary" data-choice="0">Tout refuser</button>' +
       '<button type="button" class="btn btn--sm" data-choice="1">Tout accepter</button>' +

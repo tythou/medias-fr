@@ -346,3 +346,44 @@ a.media:focus-visible{border-radius:var(--radius-lg)}
   .footer__base{flex-direction:column;align-items:flex-start}
 }
 .founder__av--photo{display:block;object-fit:cover;background:var(--md-gray-100);padding:0}
+
+/* ---------- Contact : formulaire ---------- */
+.cta--form{align-items:flex-start;gap:48px}
+.cta__intro{flex:1 1 300px;max-width:440px}
+.cta .cta__mail{font-size:15px;color:rgba(255,255,255,.78)}
+.form{flex:1 1 440px;max-width:620px;display:grid;gap:16px;background:#fff;color:var(--md-ink);border-radius:var(--radius-lg);padding:28px;box-shadow:var(--shadow-3)}
+.form__row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:var(--fw-semibold);color:var(--md-ink)}
+.field input,.field select,.field textarea{width:100%;height:48px;padding:0 16px;font-family:var(--font-sans);font-size:15px;font-weight:var(--fw-regular);color:var(--md-ink);background:#fff;border:1.5px solid var(--md-gray-200);border-radius:var(--radius-md);outline:none;transition:border-color var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out)}
+.field textarea{height:auto;min-height:132px;padding:12px 16px;line-height:1.5;resize:vertical}
+.field select{appearance:none;-webkit-appearance:none;cursor:pointer;padding-right:44px;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23111318' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 16px center}
+.field select:invalid{color:var(--md-gray-500)}
+.field input:hover,.field select:hover,.field textarea:hover{border-color:var(--md-gray-300)}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--md-blue);box-shadow:var(--focus-ring)}
+.field [aria-invalid="true"]{border-color:var(--md-red)}
+.field--hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.check{display:flex;align-items:flex-start;gap:10px;font-size:13px;line-height:1.5;color:var(--fg-2);cursor:pointer}
+.check input{appearance:none;-webkit-appearance:none;flex:none;width:20px;height:20px;margin:1px 0 0;border:1.5px solid var(--md-gray-300);border-radius:6px;background:#fff center/12px no-repeat;cursor:pointer;transition:background-color var(--dur-fast),border-color var(--dur-fast)}
+.check input:checked{background-color:var(--md-ink);border-color:var(--md-ink);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E")}
+.check input:focus-visible{box-shadow:var(--focus-ring)}
+.check input[aria-invalid="true"]{border-color:var(--md-red)}
+.check a{color:var(--md-blue);text-decoration:underline;text-underline-offset:2px}
+.form__foot{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:4px}
+.form .btn[disabled]{opacity:.5;cursor:wait}
+.cta .form__status{margin:0;font-size:14px;color:var(--fg-2)}
+.cta .form__status.is-ok{color:var(--md-success)}
+.cta .form__status.is-err{color:var(--md-red-700)}
+@media (max-width:640px){.form{padding:20px}.form__row{grid-template-columns:1fr}.form__foot .btn{width:100%}}
+
+/* ---------- Bannière de consentement ---------- */
+.footer__link{padding:0;border:0;background:none;font:inherit;color:var(--md-gray-200);cursor:pointer}
+.footer__link:hover{color:#fff}
+.consent{position:fixed;left:24px;bottom:24px;z-index:1000;width:420px;max-width:calc(100vw - 48px);background:#fff;color:var(--md-ink);border:1px solid var(--border-1);border-radius:var(--radius-lg);box-shadow:var(--shadow-3);padding:22px 22px 20px;opacity:0;transform:translateY(16px);transition:opacity var(--dur-slow) var(--ease-out),transform var(--dur-slow) var(--ease-out)}
+.consent.is-open{opacity:1;transform:none}
+.consent h2{font-size:17px;font-weight:var(--fw-bold);letter-spacing:var(--ls-heading)}
+.consent p{margin-top:6px;font-size:14px;line-height:1.5;color:var(--fg-2)}
+.consent p a{color:var(--md-blue);text-decoration:underline;text-underline-offset:2px}
+.consent__actions{display:flex;gap:10px;margin-top:16px}
+.consent__actions .btn{flex:1}
+@media (max-width:640px){.consent{left:12px;right:12px;bottom:12px;width:auto;max-width:none}}
+@media (prefers-reduced-motion:reduce){.consent{transition:none}}

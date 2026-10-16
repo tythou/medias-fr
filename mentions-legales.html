@@ -9,6 +9,8 @@
 <link rel="icon" href="assets/icone-app.svg" type="image/svg+xml">
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/site.css">
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500});</script>
 </head>
 <body>
 <header class="header">
@@ -28,13 +30,18 @@
     <div class="page__body">
       <h2>Éditeur du site</h2>
       <p>Le site medias.fr est édité par la maison medias.fr, fondée par Jérôme MOUTHON, Othman MDIDECH et Reda GHAZZALI.</p>
-      <p>Contact&nbsp;: <a href="mailto:contact@medias.fr">contact@medias.fr</a>.</p>
+      <p>Contact&nbsp;: <a href="mailto:hello@medias.fr">hello@medias.fr</a>.</p>
 
       <h2>Propriété intellectuelle</h2>
       <p>Les textes, les éléments graphiques et les marques présents sur ce site sont la propriété de leur éditeur. Toute reproduction sans accord préalable est interdite.</p>
 
-      <h2>Données personnelles</h2>
-      <p>Ce site ne dépose aucun traceur publicitaire et ne collecte aucune donnée à votre insu. Si vous nous écrivez, votre adresse et votre message servent uniquement à vous répondre. Vous pouvez demander leur suppression à tout moment en écrivant à l’adresse de contact.</p>
+      <h2 id="donnees">Données personnelles</h2>
+      <p>Les informations transmises par le formulaire de contact (nom, société, adresse électronique, objet et message) servent uniquement à répondre à votre demande et au suivi de la relation qui en découle. Elles sont adressées à la régie medias.fr, ne sont ni cédées ni revendues, et sont conservées trois ans au plus après le dernier échange.</p>
+      <p>Conformément au règlement général sur la protection des données, vous disposez d’un droit d’accès, de rectification, d’effacement et d’opposition. Pour l’exercer, écrivez à <a href="mailto:hello@medias.fr">hello@medias.fr</a>. Vous pouvez également saisir la CNIL.</p>
+
+      <h2 id="cookies">Cookies</h2>
+      <p>Les cookies de mesure d’audience ne sont déposés qu’avec votre accord, recueilli à votre première visite. Votre choix est conservé six mois et peut être modifié à tout moment.</p>
+      <p><button class="btn btn--sm btn--secondary" type="button" data-consent-open>Gérer mes choix</button></p>
 
       <h2>Contenus partenaires</h2>
       <p>Les contenus publiés pour le compte d’un annonceur sur les médias du réseau sont signalés comme tels.</p>
@@ -50,5 +57,6 @@
     </div>
   </div>
 </footer>
+<script src="js/consent.js" defer></script>
 </body>
 </html>

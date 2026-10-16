@@ -20,7 +20,9 @@
 <link rel="preload" href="fonts/Outfit-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/site.css">
-<script>document.documentElement.className='js';</script>
+<script>document.documentElement.className='js';
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500});</script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","name":"medias.fr","url":"https://medias.fr/","logo":"https://medias.fr/assets/icone-app-512.png","description":"Maison de médias thématiques en .fr et régie intégrée.","founder":[{"@type":"Person","name":"Jérôme Mouthon"},{"@type":"Person","name":"Othman MDIDECH"},{"@type":"Person","name":"Reda Ghazzali"}]}
 </script>
@@ -450,7 +452,7 @@
 
       <article class="founder t-yellow reveal">
         <div class="founder__top">
-          <span class="founder__av" aria-hidden="true">RG</span>
+          <img class="founder__av founder__av--photo" src="assets/fondateurs/reda-ghazzali.jpg" alt="Reda GHAZZALI" width="64" height="64" loading="lazy">
           <div>
             <p class="founder__role">Cofondateur · Édition et audience</p>
             <h3 class="founder__name">Reda GHAZZALI</h3>
@@ -463,7 +465,7 @@
           <p>L’architecture éditoriale de chaque titre, son référencement et la mesure de ses audiences.</p>
         </div>
         <div class="founder__links">
-          <!-- Lien LinkedIn de Reda à ajouter dès réception -->
+          <a class="chip" href="https://www.linkedin.com/in/reda-ghazzali/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11H3v-11Zm6.5 0h3.8v1.6h.06c.53-.95 1.83-1.95 3.76-1.95 4.02 0 4.76 2.5 4.76 5.75v5.6h-4v-4.96c0-1.18-.02-2.7-1.74-2.7-1.74 0-2 1.28-2 2.61v5.05h-4v-11Z"/></svg>LinkedIn</a>
         </div>
       </article>
 
@@ -536,12 +538,37 @@
 <!-- Contact -->
 <section id="contact" aria-labelledby="contact-titre">
   <div class="wrap">
-    <div class="cta reveal">
-      <div>
+    <div class="cta cta--form reveal">
+      <div class="cta__intro">
         <h2 class="h2" id="contact-titre">Un sujet, une marque, un titre. Parlons-en.</h2>
-        <p>La régie vous répond à <a href="mailto:contact@medias.fr?subject=Campagne%20sur%20les%20titres%20medias.fr">contact@medias.fr</a>.</p>
+        <p>Présentez votre projet&nbsp;: la régie revient vers vous avec une recommandation de titres et de formats.</p>
+        <p class="cta__mail">Vous pouvez aussi écrire à <a href="mailto:hello@medias.fr">hello@medias.fr</a>.</p>
       </div>
-      <a class="btn btn--lg btn--inverse" href="mailto:contact@medias.fr?subject=Campagne%20sur%20les%20titres%20medias.fr">Contacter la régie</a>
+      <form class="form" id="contact-form" action="contact.php" method="post" novalidate>
+        <div class="form__row">
+          <label class="field"><span>Nom</span><input name="nom" type="text" autocomplete="name" maxlength="120" required></label>
+          <label class="field"><span>Société</span><input name="societe" type="text" autocomplete="organization" maxlength="120"></label>
+        </div>
+        <label class="field"><span>E-mail professionnel</span><input name="email" type="email" autocomplete="email" maxlength="160" required></label>
+        <label class="field"><span>Objet</span>
+          <select name="objet" required>
+            <option value="" selected disabled>Choisir un objet</option>
+            <option>Campagne publicitaire</option>
+            <option>Contenu partenaire</option>
+            <option>Partenariat</option>
+            <option>Presse</option>
+            <option>Autre</option>
+          </select>
+        </label>
+        <label class="field"><span>Message</span><textarea name="message" rows="5" maxlength="5000" required></textarea></label>
+        <div class="field--hp" aria-hidden="true"><label>Site web<input name="site_web" type="text" tabindex="-1" autocomplete="off"></label></div>
+        <input type="hidden" name="t" value="">
+        <label class="check"><input type="checkbox" name="consentement" value="1" required><span>J’accepte que medias.fr utilise ces informations pour répondre à ma demande. <a href="mentions-legales.html#donnees">Données personnelles</a></span></label>
+        <div class="form__foot">
+          <button class="btn btn--lg" type="submit">Envoyer le message</button>
+          <p class="form__status" role="status" aria-live="polite"></p>
+        </div>
+      </form>
     </div>
   </div>
 </section>
@@ -582,8 +609,9 @@
       <div>
         <h2>Contact</h2>
         <ul>
-          <li><a href="mailto:contact@medias.fr">contact@medias.fr</a></li>
+          <li><a href="mailto:hello@medias.fr">hello@medias.fr</a></li>
           <li><a href="mentions-legales.html">Mentions légales</a></li>
+          <li><button class="footer__link" type="button" data-consent-open>Gestion des cookies</button></li>
         </ul>
       </div>
     </div>
@@ -597,5 +625,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 <script src="js/site.js" defer></script>
+<script src="js/contact.js" defer></script>
+<script src="js/consent.js" defer></script>
 </body>
 </html>
